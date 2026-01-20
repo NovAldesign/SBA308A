@@ -45,6 +45,45 @@ goalForm.addEventListener('submit', (event) => {
     }
 });
 
+// User search with API
+musicBtn.addEventListener('click', async (event) => {
+    event.preventDefault(); 
+    
+    const query = musicInput.value.trim() || 'lofi';
+
+    // loading music
+    musicList.innerHTML = '';
+    const loadingMsg = document.createElement('p');
+    loadingMsg.textContent = "Getting your focus music...";
+    musicList.appendChild(loadingMsg);
+
+    try {
+    // promise and async/await
+    const musicData = await getLofiMusic(query);
+
+    // clear loading message
+    musicList.innerHTML = '';
+
+    if (musicData.length === 0) {
+        musicList.textContent = "No audio found for your choice. Try 'lofi' ";
+        return;
+    }
+
+    musicData.forEach(track => {
+        // create elemnt for audio.mjs
+        const audioElement = createAudio(track);
+        musicList.appendChild(audioElement);
+    });
+
+} catch (error) {
+    //blockers/errors
+    console.error("Music loading failed:", error);
+    musicList.textContent = "Failed to load music. Check your connection.";
+}
+});
+    
+
+
 modeButtons.forEach((button) => {
     button.addEventListener('click', function () {
         // Get the time from the data attribute we set in HTML
@@ -96,10 +135,10 @@ function displayTimeLeft(seconds) {
 // Requirement 11: Register Event Listeners
 startBtn.addEventListener('click', () => {
     const timeText = display.textContent.split(':');
-    
+
     // Personalized Start Alert
     alert(`Lets get started on your ${timeText[0]} minute goal, ${userName}!`);
-    
+
     const totalSeconds = (parseInt(timeText[0]) * 60) + parseInt(timeText[1]);
     timer(totalSeconds);
 
@@ -137,4 +176,4 @@ function handleTimerComplete() {
 
     // Requirement 9: Modify style/classList
     document.body.classList.add('break-mode');
-}
+};

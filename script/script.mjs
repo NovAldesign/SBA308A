@@ -1,9 +1,17 @@
+import { getLofiMusic } from './axios.mjs';
+import { createAudio } from './audio.mjs';
+
 let countdown; // This will hold our setInterval
 let userName = "User";
 
 
 //caching the main display
 const display = document.getElementById('display');
+
+// Caching Music
+const musicBtn = document.getElementById('find-music');
+const musicInput = document.getElementById('music-query');
+const musicList = document.getElementById('music-list');
 
 //caching form 
 const goalForm = document.getElementById('goal');

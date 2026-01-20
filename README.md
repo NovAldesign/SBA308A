@@ -18,4 +18,4 @@ I would like to have the music stop with the timer, I need to do more research t
 
 Use this space to make notes for your future self about anything that you think is important to remember about this process, or that may aid you when attempting something similar again:
 
-I think I would like to change the CSS to dark mode/light mode. I think this would help the site be even more useful to users.
+I think I would like to change the CSS to dark mode/light mode. I think this would help the site be even more useful to users. I would take more time to try both fetch and axios. I like axios because it feel simpler but knowing both would be beneficial to me in the end. 

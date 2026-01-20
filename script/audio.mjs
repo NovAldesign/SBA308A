@@ -9,3 +9,8 @@ export function createAudio(track) {
     title.textContent = `🎵 ${track.name}`;
     title.style.display = 'block';
     title.style.marginBottom = '8px';
+
+    const audio = document.createElement('audio');
+    audio.src = track.audio; // The direct MP3 link from the API
+    audio.controls = true;
+    audio.style.width = '100%';
